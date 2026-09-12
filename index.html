@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>QuranWise — Coming Soon</title>
-<meta name="description" content="QuranWise is a quieter way to read, listen, and reflect on the Qur'an. Coming soon." />
+<title>Quranwise — Coming Soon</title>
+<meta name="description" content="Quranwise is a peaceful, Qur'an-first companion being built to help Muslims read, understand, reflect on, and live by the Qur'an. Coming soon." />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%231A3E13%22/><circle cx=%2250%22 cy=%2250%22 r=%2216%22 fill=%22%23D4AC4D%22/></svg>">
 <style>
   :root {
@@ -16,6 +16,7 @@
     --secondary: #e7eceb;
     --muted: #706e6a;
     --accent: #D4AC4D;
+    --accent-text: #806526;
     --border: rgba(26, 62, 19, 0.12);
   }
 
@@ -31,39 +32,66 @@
   }
 
   body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 32px 20px;
     position: relative;
-    overflow-x: hidden;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: var(--background);
   }
 
-  .bg-ring {
+  /* Two ornamental rosettes (shamsa/sun-disc medallions, in the style of
+     illuminated Qur'an manuscript headers) bleeding off opposite corners --
+     a single deliberate motif on each side rather than a busy repeating
+     wallpaper, for a modern, airy feel with real Islamic-art lineage. */
+  .motif {
     position: absolute;
-    border-radius: 50%;
-    border: 1px solid var(--border);
     pointer-events: none;
+    z-index: 0;
   }
-  .bg-ring.r1 { width: 640px; height: 640px; top: -220px; right: -220px; }
-  .bg-ring.r2 { width: 420px; height: 420px; bottom: -180px; left: -180px; }
+  .motif-a { top: -160px; right: -160px; width: 560px; height: 560px; }
+  .motif-b { bottom: -190px; left: -190px; width: 460px; height: 460px; }
+  .motif svg { width: 100%; height: 100%; display: block; }
 
-  .wrap {
+  @media (max-width: 700px) {
+    .motif-a { top: -220px; right: -220px; width: 420px; height: 420px; }
+    .motif-b { bottom: -240px; left: -240px; width: 360px; height: 360px; }
+  }
+
+  .page {
     position: relative;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    padding: 9vh 20px 48px;
+    min-height: 100vh;
+  }
+
+  .panel {
     width: 100%;
-    max-width: 480px;
+    max-width: 560px;
+    height: fit-content;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    box-shadow: 0 24px 60px -30px rgba(26, 62, 19, 0.25);
+    padding: 56px 44px 44px;
     text-align: center;
   }
 
   .logo {
     display: block;
     width: 100%;
-    max-width: 340px;
+    max-width: 300px;
     height: auto;
-    margin: 0 auto 32px;
+    margin: 0 auto 18px;
+  }
+
+  .tagline {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent-text);
+    margin: 0 0 26px;
   }
 
   .badge {
@@ -77,14 +105,26 @@
     border: 1px solid var(--border);
     border-radius: 999px;
     padding: 6px 14px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
 
   p.lede {
-    font-size: 17px;
-    line-height: 1.55;
+    font-size: 16px;
+    line-height: 1.65;
     color: var(--muted);
-    margin: 0 0 34px;
+    margin: 0 0 8px;
+    text-align: left;
+  }
+
+  p.lede + p.lede { margin-bottom: 32px; }
+
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin: 28px auto;
+    opacity: 0.6;
   }
 
   form {
@@ -98,11 +138,10 @@
     display: flex;
     width: 100%;
     max-width: 400px;
-    background: var(--card);
+    background: var(--background);
     border: 1px solid var(--border);
     border-radius: 999px;
     padding: 5px;
-    box-shadow: 0 1px 2px rgba(26, 62, 19, 0.04);
   }
 
   input[type="email"] {
@@ -168,9 +207,10 @@
   .honey { position: absolute; left: -9999px; }
 
   footer {
-    margin-top: 44px;
+    margin-top: 36px;
     font-size: 13px;
     color: var(--muted);
+    text-align: center;
   }
   footer a {
     color: var(--primary);
@@ -179,51 +219,80 @@
   }
   footer a:hover { text-decoration: underline; }
 
-  @media (max-width: 420px) {
-    h1 { font-size: 32px; }
+  @media (max-width: 480px) {
+    .page { padding-top: 6vh; }
+    .panel { padding: 40px 24px 32px; border-radius: 20px; }
     .field-row { flex-direction: column; border-radius: 16px; }
     button { width: 100%; }
   }
 </style>
 </head>
 <body>
-  <div class="bg-ring r1"></div>
-  <div class="bg-ring r2"></div>
-
-  <div class="wrap">
-    <div class="badge">Coming soon</div>
-    <img class="logo" src="quranwise-logo.png" alt="QuranWise" />
-    <p class="lede">
-      A quieter way to read, listen, and reflect on the Qur'an — Arabic script,
-      trusted translations, tafsir, and recitation, brought together in one
-      calm, focused app. We're putting the finishing touches on it now.
-    </p>
-
-    <form id="signup-form" action="https://formsubmit.co/salaam@quranwise.app" method="POST">
-      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" />
-      <input type="hidden" name="_subject" value="New QuranWise launch signup" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
-      <div class="field-row">
-        <input type="email" name="email" id="email" placeholder="you@example.com" required />
-        <button type="submit">Notify me</button>
-      </div>
-      <div class="fineprint">We'll only email you when QuranWise is ready. No spam.</div>
-    </form>
-
-    <div class="success" id="success-msg">
-      Jazakallah khair — you're on the list. We'll be in touch as soon as QuranWise launches.
-    </div>
-
-    <div class="error" id="error-msg">
-      Sorry — that didn't go through. Please try again, or email
-      <a href="mailto:salaam@quranwise.app">salaam@quranwise.app</a> and we'll add you.
-    </div>
-
-    <footer>
-      Questions? <a href="mailto:salaam@quranwise.app">salaam@quranwise.app</a>
-    </footer>
+  <div class="motif motif-a">
+    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <path d="M 300.0 20.0 L 344.87 74.42 L 407.15 41.31 L 427.78 108.76 L 497.99 102.01 L 491.24 172.22 L 558.69 192.85 L 525.58 255.13 L 580.0 300.0 L 525.58 344.87 L 558.69 407.15 L 491.24 427.78 L 497.99 497.99 L 427.78 491.24 L 407.15 558.69 L 344.87 525.58 L 300.0 580.0 L 255.13 525.58 L 192.85 558.69 L 172.22 491.24 L 102.01 497.99 L 108.76 427.78 L 41.31 407.15 L 74.42 344.87 L 20.0 300.0 L 74.42 255.13 L 41.31 192.85 L 108.76 172.22 L 102.01 102.01 L 172.22 108.76 L 192.85 41.31 L 255.13 74.42 Z" stroke="#146873" stroke-opacity="0.28" stroke-width="1.4"/>
+      <circle cx="300" cy="300" r="195" stroke="#146873" stroke-opacity="0.18" stroke-width="1"/>
+      <path d="M 300.0 150.0 L 330.54 186.02 L 375.0 170.1 L 383.44 216.56 L 429.9 225.0 L 413.98 269.46 L 450.0 300.0 L 413.98 330.54 L 429.9 375.0 L 383.44 383.44 L 375.0 429.9 L 330.54 413.98 L 300.0 450.0 L 269.46 413.98 L 225.0 429.9 L 216.56 383.44 L 170.1 375.0 L 186.02 330.54 L 150.0 300.0 L 186.02 269.46 L 170.1 225.0 L 216.56 216.56 L 225.0 170.1 L 269.46 186.02 Z" stroke="#B08D3E" stroke-opacity="0.30" stroke-width="1.2"/>
+      <circle cx="300" cy="300" r="70" stroke="#2B5B7A" stroke-opacity="0.22" stroke-width="1"/>
+      <circle cx="300" cy="300" r="4" fill="#A6433C" fill-opacity="0.35"/>
+    </svg>
   </div>
+  <div class="motif motif-b">
+    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <path d="M 300.0 20.0 L 344.87 74.42 L 407.15 41.31 L 427.78 108.76 L 497.99 102.01 L 491.24 172.22 L 558.69 192.85 L 525.58 255.13 L 580.0 300.0 L 525.58 344.87 L 558.69 407.15 L 491.24 427.78 L 497.99 497.99 L 427.78 491.24 L 407.15 558.69 L 344.87 525.58 L 300.0 580.0 L 255.13 525.58 L 192.85 558.69 L 172.22 491.24 L 102.01 497.99 L 108.76 427.78 L 41.31 407.15 L 74.42 344.87 L 20.0 300.0 L 74.42 255.13 L 41.31 192.85 L 108.76 172.22 L 102.01 102.01 L 172.22 108.76 L 192.85 41.31 L 255.13 74.42 Z" stroke="#B08D3E" stroke-opacity="0.26" stroke-width="1.4"/>
+      <circle cx="300" cy="300" r="195" stroke="#B08D3E" stroke-opacity="0.16" stroke-width="1"/>
+      <path d="M 300.0 150.0 L 330.54 186.02 L 375.0 170.1 L 383.44 216.56 L 429.9 225.0 L 413.98 269.46 L 450.0 300.0 L 413.98 330.54 L 429.9 375.0 L 383.44 383.44 L 375.0 429.9 L 330.54 413.98 L 300.0 450.0 L 269.46 413.98 L 225.0 429.9 L 216.56 383.44 L 170.1 375.0 L 186.02 330.54 L 150.0 300.0 L 186.02 269.46 L 170.1 225.0 L 216.56 216.56 L 225.0 170.1 L 269.46 186.02 Z" stroke="#146873" stroke-opacity="0.26" stroke-width="1.2"/>
+      <circle cx="300" cy="300" r="70" stroke="#2B5B7A" stroke-opacity="0.2" stroke-width="1"/>
+      <circle cx="300" cy="300" r="4" fill="#A6433C" fill-opacity="0.3"/>
+    </svg>
+  </div>
+
+  <div class="page">
+    <div class="panel">
+      <div class="badge">Coming soon</div>
+      <img class="logo" src="quranwise-logo.png" alt="Quranwise" />
+      <p class="tagline">Read. Understand. Reflect. Live.</p>
+
+      <p class="lede">
+        The Qur'an was not revealed only to be read — it was revealed to
+        guide us, comfort us, and draw us closer to Allah. Quranwise is
+        being built as a quiet companion for that journey: to help you not
+        just recite its words, but sit with them, understand them, and let
+        them reshape the way you live.
+      </p>
+      <p class="lede">
+        Whether you are just beginning, or trying to find your way back,
+        Quranwise aims to meet you exactly where you are.
+      </p>
+
+      <div class="divider"></div>
+
+      <form id="signup-form" action="https://formsubmit.co/salaam@quranwise.app" method="POST">
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="_subject" value="New Quranwise launch signup" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <div class="field-row">
+          <input type="email" name="email" id="email" placeholder="you@example.com" required />
+          <button type="submit">Notify me</button>
+        </div>
+        <div class="fineprint">We'll only email you when Quranwise is ready. No spam.</div>
+      </form>
+
+      <div class="success" id="success-msg">
+        Jazakallah khair — you're on the list. We'll be in touch as soon as Quranwise launches.
+      </div>
+
+      <div class="error" id="error-msg">
+        Sorry — that didn't go through. Please try again, or email
+        <a href="mailto:salaam@quranwise.app">salaam@quranwise.app</a> and we'll add you.
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Questions? <a href="mailto:salaam@quranwise.app">salaam@quranwise.app</a>
+  </footer>
 
   <script>
     // The plain formsubmit.co endpoint answers a POST with a redirect to its
