@@ -31,10 +31,17 @@
     min-height: 100%;
   }
 
+  /* No `overflow: hidden` here. With `html` left at `overflow: visible`, the
+     body's value propagates to the viewport, and WebKit (iOS Safari, and
+     Chrome on iPhone, which is WebKit underneath) honours that strictly: the
+     page stops scrolling entirely, stranding the signup form and footer below
+     an unreachable fold. Desktop Chrome does not reproduce it, so it only
+     shows up on a real phone. Nothing needs the clip any more -- .motif-a is
+     pinned to the right edge, so horizontal overflow is 0 at every width
+     measured (320-430px). */
   body {
     position: relative;
     min-height: 100vh;
-    overflow: hidden;
     background-color: var(--background);
   }
 
