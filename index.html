@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>QuranWise — Coming Soon</title>
 <meta name="description" content="QuranWise is a quieter way to read, listen, and reflect on the Qur'an. Coming soon." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23123c34%22/><circle cx=%2250%22 cy=%2250%22 r=%2216%22 fill=%22%23C7A45D%22/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%231A3E13%22/><circle cx=%2250%22 cy=%2250%22 r=%2216%22 fill=%22%23D4AC4D%22/></svg>">
 <style>
   :root {
     --background: #f8f4ec;
     --foreground: #1f2523;
     --card: #fefefd;
-    --primary: #123c34;
+    --primary: #1A3E13;
     --primary-foreground: #f8f4ec;
     --secondary: #e7eceb;
     --muted: #706e6a;
-    --accent: #C7A45D;
-    --border: rgba(18, 60, 52, 0.12);
+    --accent: #D4AC4D;
+    --border: rgba(26, 62, 19, 0.12);
   }
 
   * { box-sizing: border-box; }
@@ -58,22 +58,12 @@
     text-align: center;
   }
 
-  .mark {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 28px;
-    border-radius: 50%;
-    background: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .mark::after {
-    content: "";
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: var(--accent);
+  .logo {
+    display: block;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    margin: 0 auto 32px;
   }
 
   .badge {
@@ -89,17 +79,6 @@
     padding: 6px 14px;
     margin-bottom: 20px;
   }
-
-  h1 {
-    font-size: 40px;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin: 0 0 14px;
-    font-weight: 700;
-    color: var(--foreground);
-  }
-
-  h1 span { color: var(--accent); }
 
   p.lede {
     font-size: 17px;
@@ -123,7 +102,7 @@
     border: 1px solid var(--border);
     border-radius: 999px;
     padding: 5px;
-    box-shadow: 0 1px 2px rgba(18, 60, 52, 0.04);
+    box-shadow: 0 1px 2px rgba(26, 62, 19, 0.04);
   }
 
   input[type="email"] {
@@ -212,9 +191,8 @@
   <div class="bg-ring r2"></div>
 
   <div class="wrap">
-    <div class="mark" aria-hidden="true"></div>
     <div class="badge">Coming soon</div>
-    <h1>Quran<span>Wise</span></h1>
+    <img class="logo" src="quranwise-logo.png" alt="QuranWise" />
     <p class="lede">
       A quieter way to read, listen, and reflect on the Qur'an — Arabic script,
       trusted translations, tafsir, and recitation, brought together in one
