@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Quranwise — Coming Soon</title>
-<meta name="description" content="Quranwise is a peaceful, Qur'an-first companion being built to help Muslims read, understand, reflect on, and live by the Qur'an. Coming soon." />
+<title>Quranwise — a Qur'an companion app by MDLTN LIMITED</title>
+<meta name="description" content="Quranwise is a peaceful, Qur'an-first companion being built to help Muslims read, understand, reflect on, and live by the Qur'an. Built and operated by MDLTN LIMITED, a UK company. Coming soon to iPhone and Android." />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%231A3E13%22/><circle cx=%2250%22 cy=%2250%22 r=%2216%22 fill=%22%23D4AC4D%22/></svg>">
 <style>
   :root {
@@ -236,6 +236,35 @@
     .field-row { flex-direction: column; border-radius: 16px; }
     button { width: 100%; }
   }
+
+  /* Below the signup panel: what the app does, who is behind it, how to get
+     in touch. Stacked under the first panel rather than beside it, so the
+     signup stays the first thing on a phone. */
+  .page {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    min-height: 0;
+  }
+  .panel.info { text-align: left; padding: 40px 44px; }
+  .info h1 { font-size: 26px; line-height: 1.25; color: var(--primary); margin: 0 0 6px; }
+  .info h2 { font-size: 19px; color: var(--primary); margin: 32px 0 10px; }
+  .info h2:first-child { margin-top: 0; }
+  .info p, .info li { font-size: 15px; line-height: 1.65; color: var(--muted); margin: 0 0 10px; }
+  .info ul { margin: 0 0 10px; padding-left: 20px; }
+  .info strong { color: var(--foreground); font-weight: 600; }
+  .info a { color: var(--primary); font-weight: 600; text-decoration: none; }
+  .info a:hover { text-decoration: underline; }
+  .info .updated { font-size: 13px; margin-bottom: 24px; }
+  .back { font-size: 14px; margin: 0 0 20px; }
+
+  footer { margin-top: 0; padding: 12px 20px 44px; line-height: 1.7; position: relative; z-index: 1; }
+  footer .company { max-width: 560px; margin: 10px auto 0; font-size: 12px; }
+
+  @media (max-width: 480px) {
+    .panel.info { padding: 32px 24px; }
+  }
 </style>
 </head>
 <body>
@@ -287,7 +316,7 @@
           <input type="email" name="email" id="email" placeholder="you@example.com" required />
           <button type="submit">Notify me</button>
         </div>
-        <div class="fineprint">We'll only email you when Quranwise is ready. No spam.</div>
+        <div class="fineprint">We'll only email you when Quranwise is ready. No spam. See our <a href="privacy.html" style="color:inherit">privacy policy</a>.</div>
       </form>
 
       <div class="success" id="success-msg">
@@ -299,10 +328,50 @@
         <a href="mailto:salaam@quranwise.app">salaam@quranwise.app</a> and we'll add you.
       </div>
     </div>
+
+    <div class="panel info">
+      <h2>What Quranwise does</h2>
+      <p>
+        Quranwise is an all-in-one Qur'an and Muslim-life app for iPhone and
+        Android. It brings together, in one calm place:
+      </p>
+      <ul>
+        <li><strong>Reading</strong> &mdash; the Qur'an, laid out to be read and understood, not just scrolled.</li>
+        <li><strong>Memorising</strong> &mdash; tools to help you learn and keep what you have learned.</li>
+        <li><strong>Prayer times</strong> &mdash; for wherever you are.</li>
+        <li><strong>Family learning</strong> &mdash; a family dashboard, so a household can learn together.</li>
+      </ul>
+      <p>The app is in testing and has not been released yet. Leave your email above and we will tell you the day it is ready.</p>
+
+      <h2 id="about">About us</h2>
+      <p>
+        Quranwise is built and operated by <strong>MDLTN LIMITED</strong>, a
+        private limited company registered in England and Wales (company
+        number 17082610).
+      </p>
+      <p>
+        Registered office: Cube Accountants First Floor, Parkway Two,
+        Manchester, United Kingdom, M14 7HR.
+      </p>
+
+      <h2 id="contact">Contact</h2>
+      <p>
+        Questions, feedback or partnership enquiries:
+        <a href="mailto:salaam@quranwise.app">salaam@quranwise.app</a>
+      </p>
+    </div>
   </div>
 
   <footer>
-    Questions? <a href="mailto:salaam@quranwise.app">salaam@quranwise.app</a>
+    <a href="#about">About</a> &nbsp;&middot;&nbsp;
+    <a href="privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp;
+    <a href="mailto:salaam@quranwise.app">salaam@quranwise.app</a>
+    <div class="company">
+      &copy; 2026 MDLTN LIMITED. Quranwise is a product of MDLTN LIMITED, a
+      company registered in England and Wales, company number 17082610.
+      Registered office: Cube Accountants First Floor, Parkway Two,
+      Manchester, United Kingdom, M14 7HR.
+    </div>
   </footer>
 
   <script>
